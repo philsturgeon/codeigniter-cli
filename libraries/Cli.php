@@ -221,7 +221,7 @@ class Cli {
 			$this->write('This is not a valid option. Please try again.');
 			$this->new_line();
 
-			$input = call_user_func(array($this, 'prompt'), $args);
+			$input = call_user_func_array(array($this, 'prompt'), $args);
 		}
 
 		return $input;
