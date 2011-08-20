@@ -226,6 +226,25 @@ class Cli {
 
 		return $input;
 	}
+	
+	/**
+	 * Outputs an array with possible multiple foreground/background colors
+	 * 
+	 * @param	array	$text	a single line array to output, with text, fg
+	 * and bg in the array
+	 */
+	public function multi_write($text = array())
+	{
+		$str = '';
+		foreach($text AS $opts)
+		{
+			if ($opts["fg"] || $opts["bg"])
+			{
+				$str .= $this->color($opts["text"], $opts["fg"], $opts["bg"]);
+			}
+		}
+		$this->write($str);
+	}
 
 	/**
 	 * Outputs a string to the cli.	 If you send an array it will implode them
