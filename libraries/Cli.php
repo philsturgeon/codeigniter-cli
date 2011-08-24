@@ -241,6 +241,8 @@ class Cli {
 			if ($opts["fg"] || $opts["bg"])
 			{
 				$str .= $this->color($opts["text"], $opts["fg"], $opts["bg"]);
+			} else {
+				$str .= $opts["text"];
 			}
 		}
 		$this->write($str);
