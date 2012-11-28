@@ -53,15 +53,18 @@ class Cli {
 	 */
 	public function __construct()
 	{
-		for ($i = 1; $i < $_SERVER['argc']; $i++)
+		if (isset($_SERVER['argc']))
 		{
-			$arg = explode('=', $_SERVER['argv'][$i]);
-
-			$this->_args[$i] = $arg[0];
-
-			if (count($arg) > 1 || strncmp($arg[0], '-', 1) === 0)
+			for ($i = 1; $i < $_SERVER['argc']; $i++)
 			{
-				$this->_args[ltrim($arg[0], '-')] = isset($arg[1]) ? $arg[1] : true;
+				$arg = explode('=', $_SERVER['argv'][$i]);
+
+				$this->_args[$i] = $arg[0];
+
+				if (count($arg) > 1 || strncmp($arg[0], '-', 1) === 0)
+				{
+					$this->_args[ltrim($arg[0], '-')] = isset($arg[1]) ? $arg[1] : true;
+				}
 			}
 		}
 
